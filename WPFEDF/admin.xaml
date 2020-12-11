@@ -1,0 +1,84 @@
+﻿<Window x:Class="WPFEDF.admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFEDF"
+        mc:Ignorable="d"
+        Title="admin" Height="600" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Text="Gestion EDF"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Liste des controleurs" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Liste des clients" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+        <ListView Grid.Row="2" Grid.Column="0" Name="lstControleurs" SelectionChanged="lstControleurs_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="20" Text="{Binding id}"></TextBlock>
+                        <TextBlock Text="{Binding nom}"></TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Grid.Row="2" Grid.Column="1" Name="lstClients">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="20" Text="{Binding Id}"></TextBlock>
+                        <TextBlock Width="100" Text="{Binding NomClient}"></TextBlock>
+                        <TextBlock Width="100" Text="{Binding PrenomClient}"></TextBlock>
+                        <TextBlock Width="50" Text="{Binding AncienReleve}"></TextBlock>
+                        <TextBlock Width="50" Text="{Binding DerneirReleve}"></TextBlock>
+                        <TextBlock Width="50" Text="{Binding Consommation}"></TextBlock>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Nom du controleur"></TextBlock>
+                <TextBox Name="txtNomControleur"></TextBox>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Prenom du controleur"></TextBlock>
+                <TextBox Name="txtPrenomControleur"></TextBox>
+            </StackPanel>
+
+            <Button x:Name="btnAjoutControleur" Content="Inserer un contrôleur" Click="btnAjoutControleur_Click"></Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5" >
+            <StackPanel>
+                <TextBlock Text="Nom du client"></TextBlock>
+                <TextBox Name="txtNomClient"></TextBox>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Prenom du client"></TextBlock>
+                <TextBox Name="txtPrenomClient"></TextBox>
+            </StackPanel>
+
+            <Button x:Name="btnAjoutClient" Content="Inserer un client" Click="btnAjoutClient_Click"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
